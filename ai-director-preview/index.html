@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="AI Director 社会实验导演台离线预览。" />
+    <title>AI Director 离线预览 | 张展皓作品集</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .preview-shell {
+        min-height: 100vh;
+        padding: 96px 5vw;
+      }
+
+      .preview-top {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+        gap: 7vw;
+        align-items: end;
+        margin-bottom: 54px;
+      }
+
+      .preview-top h1 {
+        margin-bottom: 0;
+      }
+
+      .preview-top p {
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .demo-board {
+        border: 1px solid var(--ink);
+        background: var(--surface);
+      }
+
+      .demo-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 56px;
+        border-bottom: 1px solid var(--line);
+        padding: 0 18px;
+      }
+
+      .demo-header strong {
+        font-size: 15px;
+      }
+
+      .demo-header span {
+        color: var(--accent);
+        font: 11px var(--mono);
+      }
+
+      .story-rail {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .story-rail div {
+        min-height: 78px;
+        border-right: 1px solid var(--line);
+        padding: 14px 10px;
+      }
+
+      .story-rail div:last-child {
+        border-right: 0;
+      }
+
+      .story-rail b {
+        display: block;
+        font-size: 12px;
+      }
+
+      .story-rail small {
+        color: var(--muted);
+        font: 10px var(--mono);
+      }
+
+      .story-rail .active {
+        background: var(--signal);
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+      }
+
+      .transcript,
+      .side-panel {
+        padding: 24px;
+      }
+
+      .transcript {
+        border-right: 1px solid var(--line);
+      }
+
+      .bubble {
+        margin: 0 0 14px;
+        border: 1px solid var(--line);
+        background: #f8f5ee;
+        padding: 16px;
+      }
+
+      .bubble b {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .beat-card {
+        margin: 22px 0;
+        border-left: 4px solid var(--red);
+        background: #fff0ec;
+        padding: 18px;
+      }
+
+      .side-panel {
+        display: grid;
+        gap: 16px;
+        background: #f0ebe1;
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        padding: 16px;
+      }
+
+      .metric strong {
+        display: block;
+        font: 800 28px var(--mono);
+      }
+
+      .shots {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        margin-top: 34px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .shots article {
+        background: var(--surface);
+        padding: 18px;
+      }
+
+      .shots span,
+      .shots code {
+        display: block;
+        color: var(--muted);
+        font: 11px var(--mono);
+      }
+
+      .rules-panel {
+        margin-top: 42px;
+        border-top: 1px solid var(--ink);
+        padding-top: 28px;
+      }
+
+      @media (max-width: 900px) {
+        .preview-top,
+        .demo-grid,
+        .shots {
+          grid-template-columns: 1fr;
+        }
+
+        .story-rail {
+          grid-template-columns: 1fr;
+        }
+
+        .story-rail div {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .transcript {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">ZZH</span>
+        <span>返回作品集</span>
+      </a>
+      <nav aria-label="预览页导航">
+        <a href="#demo">预览</a>
+        <a href="#shots">分镜</a>
+        <a href="#rules">规则</a>
+      </nav>
+    </header>
+
+    <main class="preview-shell">
+      <section class="preview-top">
+        <div>
+          <p class="eyebrow">OFFLINE PROJECT PREVIEW</p>
+          <h1>AI Director 社会实验导演台</h1>
+        </div>
+        <p>
+          这是离线作品集中的静态预览，用来说明产品叙事和关键界面。真实工作台支持 Live Mode 与 Replay Mode，完整运行需要本地服务启动。
+        </p>
+      </section>
+
+      <section class="demo-board" id="demo" aria-label="AI Director 工作台静态预览">
+        <div class="demo-header">
+          <strong>最后四个席位</strong>
+          <span>Replay Mode · 90 秒导演版</span>
+        </div>
+        <div class="story-rail" aria-label="90 秒导演叙事线">
+          <div><b>实验问题</b><small>00-10s</small></div>
+          <div><b>AI 角色阵容</b><small>10-20s</small></div>
+          <div class="active"><b>关键冲突</b><small>20-45s</small></div>
+          <div><b>秘密行动</b><small>45-60s</small></div>
+          <div><b>结算反转</b><small>60-70s</small></div>
+          <div><b>证据分镜</b><small>70-85s</small></div>
+          <div><b>导演总结</b><small>85-90s</small></div>
+        </div>
+        <div class="demo-grid">
+          <div class="transcript">
+            <p class="bubble"><b>DeepSeek</b> 先别把人变成数字。我们应该先公开每个人最担心失去什么，再谈席位。</p>
+            <p class="bubble"><b>GPT</b> 联盟不是友谊，是风险对冲。我只和能提供确定回报的人合作。</p>
+            <p class="bubble"><b>Doubao</b> 最终名单需要最大化团队存活率，而不是让所有人感觉公平。</p>
+            <div class="beat-card">
+              <strong>关键节点：背叛发生</strong>
+              <p>公开承诺与秘密投票出现矛盾，系统自动暂停并生成可定位证据。</p>
+            </div>
+          </div>
+          <aside class="side-panel" aria-label="角色状态与规则评分">
+            <div class="metric"><strong>89</strong><span>规则稳定性</span></div>
+            <div class="metric"><strong>84</strong><span>博弈深度</span></div>
+            <div class="metric"><strong>96</strong><span>冲突潜力</span></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rules-panel" id="shots">
+        <p class="eyebrow">Evidence Shot Deck</p>
+        <h2>录屏即可成片的证据分镜</h2>
+        <div class="shots">
+          <article><span>Shot 01</span><h3>实验问题</h3><code>title-card</code></article>
+          <article><span>Shot 03</span><h3>价值冲突</h3><code>event-message</code></article>
+          <article><span>Shot 05</span><h3>结算反转</h3><code>event-settlement</code></article>
+          <article><span>Shot 07</span><h3>导演总结</h3><code>director-summary</code></article>
+        </div>
+      </section>
+
+      <section class="rules-panel" id="rules">
+        <p class="eyebrow">Rule Artifact</p>
+        <h2>已接入规则设计文档</h2>
+        <p>
+          作品集中已附带 DS Pro 生成的 AI 博弈规则，包含目标、行动、结算公式、秘密目标、追赶机制和主持人提示词。
+        </p>
+        <a class="primary-action" href="../rule-document.html">打开规则文档</a>
+      </section>
+    </main>
+  </body>
+</html>
